@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (for social icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Sticky nav with smooth-scroll links. Becomes opaque on scroll.
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#">Dev<span>.Portfolio</span></a>
+
+      <!-- Desktop nav links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#projects" class="nav-btn">View Work</a></li>
+      </ul>
+
+      <!-- Mobile hamburger button -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-screen introduction with name, tagline, and CTA buttons.
+  ============================================================ -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Data Scientist &amp; Web Developer</span>
+
+      <h1 class="hero-title fade-up">
+        Hi, I'm <span class="gradient-text">Sarthak</span><br />
+        I build digital <span class="muted-text">experiences.</span>
+      </h1>
+
+      <p class="hero-sub fade-up delay-1">
+        I specialize in transforming complex data into actionable insights and
+        crafting polished, responsive web applications that solve real problems.
+      </p>
+
+      <div class="hero-buttons fade-up delay-2">
+        <a href="#projects" class="btn btn-primary">
+          View My Work <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT SECTION
+       Profile photo, bio paragraph, and skills tags.
+  ============================================================ -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Left: Photo + Bio -->
+        <div class="about-left reveal">
+          <!-- Profile photo. Replace 'profile.png' with your actual photo file. -->
+          <div class="profile-photo-wrap">
+            <img src="profile.jpeg" alt="Alex – Profile Photo" class="profile-photo" />
+            <span class="status-dot"></span>
+          </div>
+
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+
+          <div class="about-bio">
+            <p>
+              I'm a multidisciplinary tech professional with a deep passion for
+              the intersection of data and design. With a background spanning
+              Data Science, Power BI analytics, and full-stack web development,
+              I don't just build websites — I build intelligent systems.
+            </p>
+            <p>
+              My approach is rooted in precision. Whether I'm designing a
+              sleek, responsive frontend or engineering a complex data pipeline,
+              I believe in clean code, thoughtful architecture, and
+              user-centric design.
+            </p>
+            <p>
+              When I'm not coding or querying databases, you can find me
+              exploring new technologies, contributing to open source, or
+              analyzing datasets just for fun.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Skills grid -->
+        <div class="about-right reveal delay-1">
+          <div class="skills-card">
+            <h3>Core Competencies</h3>
+            <div class="skills-grid">
+              <!-- Add or remove skills here -->
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Data Science</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PROJECTS SECTION
+       Three project cards with title, description, and buttons.
+  ============================================================ -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Selected <span class="gradient-text">Projects</span></h2>
+        <p class="section-sub">A curated selection of my recent work across data science and web development.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project Card 1 -->
+        <div class="project-card reveal">
+          <div class="card-top-bar"></div>
+          <h3>Sales Analytics Dashboard</h3>
+          <p>
+            A comprehensive Power BI and React dashboard that aggregates sales
+            data across regions, providing real-time insights and predictive
+            modeling for future quarters.
+          </p>
+          <div class="card-tags">
+            <span>Power BI</span><span>React</span><span>SQL</span><span>Python</span>
+          </div>
+          <div class="card-buttons">
+            <a href="#" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Project
+            </a>
+            <a href="#" class="btn btn-outline btn-sm">
+              <i class="fa-brands fa-github"></i> Source
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card reveal delay-1">
+          <div class="card-top-bar"></div>
+          <h3>Personal Finance Tracker</h3>
+          <p>
+            A full-stack application helping users track expenses, categorize
+            spending automatically using ML, and visualize financial health
+            over time.
+          </p>
+          <div class="card-tags">
+            <span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>PostgreSQL</span>
+          </div>
+          <div class="card-buttons">
+            <a href="#" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Project
+            </a>
+            <a href="#" class="btn btn-outline btn-sm">
+              <i class="fa-brands fa-github"></i> Source
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card reveal delay-2">
+          <div class="card-top-bar"></div>
+          <h3>Interactive Portfolio</h3>
+          <p>
+            A highly polished, performance-optimized personal portfolio
+            featuring complex animations, responsive design principles, and a
+            modern dark aesthetic.
+          </p>
+          <div class="card-tags">
+            <span>React</span><span>Framer Motion</span><span>Vite</span><span>Shadcn UI</span>
+          </div>
+          <div class="card-buttons">
+            <a href="#" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Project
+            </a>
+            <a href="#" class="btn btn-outline btn-sm">
+              <i class="fa-brands fa-github"></i> Source
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT SECTION
+       Contact info + form with JavaScript validation.
+  ============================================================ -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: info -->
+        <div class="contact-info reveal">
+          <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+          <p>
+            I'm currently available for freelance projects and full-time
+            opportunities. Whether you have a question or just want to say hi,
+            I'll try my best to get back to you!
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a href="mailto:hello@example.com">sarthak.chattar24@sanjivani.edu.in</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Location</span>
+              <span>Kopargaon, Maharastra</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="contact-form-wrap reveal delay-1">
+          <!-- Success message (hidden by default) -->
+          <div id="formSuccess" class="form-success" style="display:none;">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Message sent! I'll get back to you soon.</p>
+          </div>
+
+          <form id="contactForm" novalidate>
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="John Doe"
+                autocomplete="name"
+              />
+              <!-- Error message shown by JS -->
+              <span class="form-error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john@example.com"
+                autocomplete="email"
+              />
+              <span class="form-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="How can I help you?"
+              ></textarea>
+              <span class="form-error" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              Send Message <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       Social links and copyright.
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Dev<span>.Portfolio</span></div>
+
+      <p class="footer-copy">
+        &copy; <span id="year"></span> All rights reserved. Built with HTML, CSS &amp; JavaScript.
+      </p>
+
+      <div class="footer-socials">
+        <!-- Update href values to your real profile URLs -->
+        <a href="https://www.linkedin.com/in/sarthak-chattar-18081833a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/sarthak3245" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Your JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

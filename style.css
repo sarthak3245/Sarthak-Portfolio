@@ -1,0 +1,720 @@
+/* ============================================================
+   style.css – Personal Portfolio
+   ============================================================
+   Table of contents:
+     1. CSS Variables (colors, fonts, spacing)
+     2. Reset & Base
+     3. Utilities (container, buttons, section titles)
+     4. Navigation
+     5. Hero Section
+     6. About Section
+     7. Projects Section
+     8. Contact Section
+     9. Footer
+    10. Scroll-reveal Animations
+    11. Responsive (Tablet & Mobile)
+============================================================ */
+
+
+/* ============================================================
+   1. CSS VARIABLES
+   Edit these to quickly retheme the whole site.
+============================================================ */
+:root {
+  /* Colors */
+  --bg:           #0f172a;         /* Page background */
+  --bg-card:      #1e293b;         /* Card / panel background */
+  --bg-input:     #162032;         /* Form input background */
+  --border:       rgba(255,255,255,0.07);
+  --primary:      #7c3aed;         /* Violet accent */
+  --primary-light:#a78bfa;
+  --primary-glow: rgba(124,58,237,0.25);
+  --text:         #f1f5f9;         /* Main text */
+  --text-muted:   #94a3b8;        /* Subdued text */
+  --white:        #ffffff;
+
+  /* Gradients */
+  --gradient:     linear-gradient(135deg, #7c3aed, #60a5fa);
+
+  /* Fonts */
+  --font-display: 'Outfit', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+
+  /* Sizes */
+  --radius:       16px;
+  --radius-sm:    8px;
+  --max-w:        1200px;
+
+  /* Transitions */
+  --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a  { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+
+/* ============================================================
+   3. UTILITIES
+============================================================ */
+
+/* Centered, max-width wrapper */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section heading */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* Muted subtitle under a section heading */
+.section-sub {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+/* Violet gradient text (used for name, headings) */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Used for the "experiences." part of the hero */
+.muted-text { color: rgba(241,245,249,0.6); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s var(--ease);
+  text-decoration: none;
+}
+
+/* Solid white button (primary action) */
+.btn-primary {
+  background: var(--white);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: rgba(255,255,255,0.88);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* Ghost / outline button */
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-2px);
+}
+
+/* Smaller variant used inside cards */
+.btn-sm { padding: 10px 20px; font-size: 0.875rem; }
+
+/* Full-width button (contact form submit) */
+.btn-full { width: 100%; justify-content: center; }
+
+
+/* ============================================================
+   4. NAVIGATION
+============================================================ */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease), padding 0.3s var(--ease);
+}
+
+/* JS adds this class when scrolled past hero */
+#navbar.scrolled {
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+  padding: 12px 0;
+}
+
+.nav-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.nav-logo span { color: var(--primary-light); }
+
+/* Desktop nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+/* "View Work" pill button inside nav */
+.nav-links .nav-btn {
+  padding: 10px 22px;
+  border-radius: 100px;
+  background: var(--primary);
+  color: var(--white) !important;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-links .nav-btn:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+/* Hamburger (mobile only) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease);
+}
+/* Animated X state */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* ============================================================
+   5. HERO SECTION
+============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 100px 24px 80px;
+
+  /* Radial mesh gradient background */
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,58,237,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(96,165,250,0.15) 0%, transparent 60%),
+    var(--bg);
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.3);
+  color: var(--primary-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+.scroll-mouse {
+  width: 28px;
+  height: 46px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+.scroll-dot {
+  width: 4px;
+  height: 10px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 100px;
+  animation: scrollDot 2s infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
+@keyframes scrollDot { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(12px)} }
+
+
+/* ============================================================
+   6. ABOUT SECTION
+============================================================ */
+.about {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- Profile photo --- */
+.profile-photo-wrap {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 36px;
+}
+
+.profile-photo {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(124,58,237,0.4);
+  box-shadow: 0 0 0 8px rgba(124,58,237,0.08), 0 16px 40px rgba(0,0,0,0.4);
+}
+
+/* Green "available" dot */
+.status-dot {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background: #4ade80;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.3);
+}
+
+.about-bio { color: var(--text-muted); }
+.about-bio p { margin-bottom: 1rem; line-height: 1.85; }
+
+/* --- Skills card --- */
+.skills-card {
+  background: rgba(30,41,59,0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  backdrop-filter: blur(8px);
+}
+.skills-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skill-tag {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(241,245,249,0.85);
+  cursor: default;
+  transition: border-color 0.2s, color 0.2s;
+}
+.skill-tag:hover {
+  border-color: rgba(124,58,237,0.5);
+  color: var(--primary-light);
+}
+
+
+/* ============================================================
+   7. PROJECTS SECTION
+============================================================ */
+.projects {
+  padding: 100px 0;
+  background: rgba(255,255,255,0.015);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-header .section-sub { margin: 0 auto; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Individual card */
+.project-card {
+  background: rgba(15,23,42,0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+  backdrop-filter: blur(8px);
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,58,237,0.3);
+  border-color: rgba(124,58,237,0.3);
+}
+
+/* Gradient bar that appears on hover */
+.card-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.project-card:hover .card-top-bar { opacity: 1; }
+
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.project-card p {
+  color: var(--text-muted);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.card-tags span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(124,58,237,0.12);
+  color: var(--primary-light);
+}
+
+.card-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+
+/* ============================================================
+   8. CONTACT SECTION
+============================================================ */
+.contact {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info .section-title { margin-bottom: 20px; }
+.contact-info > p { color: var(--text-muted); margin-bottom: 40px; line-height: 1.85; }
+
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-item { display: flex; flex-direction: column; gap: 4px; }
+.contact-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact-item a,
+.contact-item span { font-size: 1.1rem; font-weight: 500; color: var(--white); }
+.contact-item a:hover { color: var(--primary-light); }
+
+/* --- Form wrapper --- */
+.contact-form-wrap {
+  background: rgba(30,41,59,0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  backdrop-filter: blur(8px);
+}
+
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(241,245,249,0.8);
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(124,58,237,0.5);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+
+/* Inline validation error */
+.form-error {
+  font-size: 0.82rem;
+  color: #f87171;
+  min-height: 18px;
+}
+
+/* Invalid state visual */
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: rgba(248,113,113,0.5);
+}
+
+/* Success message */
+.form-success {
+  text-align: center;
+  padding: 32px;
+  color: #4ade80;
+}
+.form-success i { font-size: 2.5rem; margin-bottom: 12px; }
+.form-success p { font-size: 1rem; color: var(--text-muted); }
+
+/* Submitting state */
+#submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+
+/* ============================================================
+   9. FOOTER
+============================================================ */
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo span { color: var(--primary-light); }
+
+.footer-copy { font-size: 0.875rem; color: var(--text-muted); }
+
+.footer-socials { display: flex; gap: 12px; }
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.footer-socials a:hover {
+  background: rgba(124,58,237,0.2);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   10. SCROLL-REVEAL ANIMATIONS
+   Elements with class "reveal" start invisible.
+   JS adds "visible" when they enter the viewport.
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger helpers */
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+
+/* Hero fade-up animation (triggered via class on page load) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s var(--ease) forwards;
+}
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   11. RESPONSIVE
+============================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid    { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15,23,42,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    font-size: 1.3rem;
+    z-index: 999;
+  }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; z-index: 1001; }
+
+  .projects-grid { grid-template-columns: 1fr; }
+  .hero-buttons  { flex-direction: column; align-items: center; }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
